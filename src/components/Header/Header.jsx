@@ -25,7 +25,7 @@ function Header() {
             </li>
           </ol>
           <button className="login">
-            <Link to="/login">Log In</Link>
+            <Link to="/profile">Log In</Link>
           </button>
           <button className="login">
             <Link to="/signin">Sign In</Link>
