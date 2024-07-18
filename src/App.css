@@ -1,15 +1,15 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-:root{
+:root {
   --primary-color: ;
   --secondary-color: ;
   --primary-font: ;
   --secondary-font: ;
 }
-html{
+html {
   font-size: 62.5%;
   /* 1rem = 16px */
 }
