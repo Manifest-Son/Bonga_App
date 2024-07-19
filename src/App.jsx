@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Signin from "./pages/Signin/Signin";
 import Profile from "./pages/Profile/Profile";
 import Collaboration from "./pages/Collaborate/Colbaboration";
+import Events from "./pages/Eventpage/Events";
 
 function App() {
   return (
@@ -20,8 +21,8 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/collaboration" element={<Collaboration />} />
+          <Route path="/events" element={<Events />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );

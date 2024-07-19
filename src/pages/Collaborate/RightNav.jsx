@@ -42,7 +42,7 @@ function RightNav() {
     <section className="leadership_container">
       <h1>Executive Council</h1>
       {leadership.map((leaders) => (
-        <div className="social_wrapper">
+        <div key={leaders.id} className="social_wrapper">
           <img src={leaders.img} alt="" />
           <div className="social_details">
             <h2>{leaders.leadname}</h2>

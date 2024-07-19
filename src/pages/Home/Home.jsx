@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import Footer from "../../components/Footer/Footer";
 
 function Home() {
   return (
-    <>
-      <h1>Hello World!</h1>
-    </>
+    <section>
+      <Footer />
+    </section>
   );
 }
 

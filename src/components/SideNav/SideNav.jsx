@@ -1,9 +1,10 @@
-import "./Collabos.css";
+import "./SideNav.css";
 import sampleImg from "../../assets/sample.jpg";
 import { MdEvent } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function SideNav() {
   return (
@@ -15,18 +16,18 @@ function SideNav() {
           <p> Year: Year 1</p>
         </div>
         <div className="side_nav">
-          <a href="">
+          <Link to="/profile">
             <CgProfile /> Profile
-          </a>
-          <a href="">
+          </Link>
+          <Link to="/collaboration">
             <FaPeopleGroup /> Collaborate
-          </a>
-          <a href="">
+          </Link>
+          <Link to="/events">
             <MdEvent /> Events
-          </a>
-          <a href="">
+          </Link>
+          <Link to="/login">
             <MdLogout /> Log Out
-          </a>
+          </Link>
         </div>
       </div>
     </section>

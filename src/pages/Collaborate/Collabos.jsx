@@ -17,8 +17,9 @@ function Collabos() {
         <div className="collabo_content">
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
-            voluptas impedit repellendus dolorem nulla velit?
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad non eius voluptas sunt deserunt nemo illum iure, beatae assumenda vero!
+            voluptas impedit repellendus dolorem nulla velit? Lorem ipsum dolor
+            sit amet, consectetur adipisicing elit. Ad non eius voluptas sunt
+            deserunt nemo illum iure, beatae assumenda vero!
           </p>
           <img src={socialImg} alt="" />
         </div>

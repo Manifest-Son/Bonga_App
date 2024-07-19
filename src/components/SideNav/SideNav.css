@@ -1,0 +1,42 @@
+.sidenav_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: first baseline;
+  font-size: 2rem;
+  background-color: #212c42;
+  min-height: 100vh;
+  width: 100%;
+  gap: 1rem;
+}
+@media screen and (min-width: 43.75) {
+  .sidenav_wrapper {
+    position: fixed;
+  }
+}
+.sidenav_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.sidenav_profile img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+}
+.side_nav {
+  display: grid;
+  gap: 2rem;
+}
+.side_nav a {
+  border-bottom: 2px solid black;
+  text-align: center;
+  color: white;
+  min-width: 20rem;
+}
+.side_nav a:hover {
+  background-color: #f56508;
+  color: #212c42;
+}
