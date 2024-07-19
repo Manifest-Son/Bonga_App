@@ -1,0 +1,122 @@
+.sidenav_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: first baseline;
+  font-size: 2rem;
+  background-color: #212c42;
+  min-height: 100vh;
+  width: 100%;
+  gap: 1rem;
+}
+@media screen and (min-width: 43.75) {
+  .sidenav_wrapper {
+    position: fixed;
+  }
+}
+.sidenav_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.sidenav_profile img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+}
+.side_nav {
+  display: grid;
+  gap: 2rem;
+}
+.side_nav a {
+  border-bottom: 2px solid black;
+  text-align: center;
+  color: white;
+  min-width: 20rem;
+}
+.side_nav a:hover {
+  background-color: #f56508;
+  color: #212c42;
+}
+.leadership_container {
+  background-color: #212c42;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.leadership_container h1 {
+  font-size: 2rem;
+  text-decoration: underline;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+.social_wrapper {
+  border: 2px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.social_wrapper img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+}
+.collabo_wrapper {
+    border: 2px solid black;
+  background-color: #f56508;
+  width: 50rem;
+  display: grid;
+  place-content: center;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+.collabo_header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.collabo_header img {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+}
+.collabo_content {
+  width: 50rem;
+  padding: 1rem;
+}
+.collabo_content p{
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    font-size: 1.9rem;
+
+}
+.collabo_content img {
+  height: 15vh;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.collabos_container{
+    width: 60rem;
+    display: grid;
+    place-content: center;
+}
+.collabo_container{
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+}
+.side_container{
+    width: 25%;
+}
+.center_container{
+    width: 50%;
+}

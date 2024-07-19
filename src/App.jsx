@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Login from "./pages/Login/Login";
 import Signin from "./pages/Signin/Signin";
 import Profile from "./pages/Profile/Profile";
+import Collaboration from "./pages/Collaborate/Colbaboration";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/collaboration" element={<Collaboration />} />
         </Routes>
         <Footer />
       </BrowserRouter>

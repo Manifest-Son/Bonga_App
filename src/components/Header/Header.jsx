@@ -15,7 +15,7 @@ function Header() {
           <ol className="nav_links">
             <li>
               <nav>
-                <Link to="/">Home</Link>
+                <Link to="/collaboration">Home</Link>
               </nav>
             </li>
             <li>
