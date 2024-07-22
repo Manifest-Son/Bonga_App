@@ -40,3 +40,47 @@
   background-color: #f56508;
   color: #212c42;
 }
+.admin_nav_wrapper {
+  background-color: #212c42;
+  color: #ffffff;
+  font-size: 1.5rem;
+  min-width: 25rem;
+  display: grid;
+  justify-content: center;
+  align-items: baseline;
+  /* gap: .5rem; */
+  position: fixed;
+  height: 100vh;
+}
+.admin_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.admin_profile img {
+  height: 10rem;
+  width: 10rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
+.admin_links {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+.admin_links a {
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 10px;
+  border-bottom: 3px solid black;
+  border-top: 1px solid black;
+}
+.admin_links a:hover {
+  background-color: #ffffff;
+  color: #f56508;
+}

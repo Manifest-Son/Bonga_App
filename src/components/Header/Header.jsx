@@ -20,16 +20,27 @@ function Header() {
             </li>
             <li>
               <nav>
-                <Link to="/events">About</Link>
+                <Link to="/about">About</Link>
               </nav>
             </li>
           </ol>
-          <button className="login">
-            <Link to="/profile">Log In</Link>
+          {/* <button className="login">
+            <Link to="/login">Log In</Link>
           </button>
           <button className="login">
             <Link to="/signin">Sign In</Link>
-          </button>
+          </button> */}
+          {/* {user ? (
+          <>
+            <span>Welcome, {user.firstname}</span>
+            <button onClick={logout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+          </>
+        )} */}
         </div>
       </div>
     </section>

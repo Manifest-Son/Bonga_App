@@ -1,37 +1,87 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import "./Signin.css";
 import { useFormik } from "formik";
-// import * as Yup from 'yup';
+import { useState } from "react";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import toast from "react-simple-toasts";
+import "react-simple-toasts/dist/theme/failure.css";
+import "react-simple-toasts/dist/theme/success.css";
+import { apiURL } from "../../config/config";
+
+const validationSchema = Yup.object({
+  firstname: Yup.string().required("First Name is required"),
+  lastname: Yup.string().required("Last Name is required"),
+  emailAddress: Yup.string()
+    .required("Email Address is required.")
+    .email("Use correct email address"),
+  year: Yup.string().required("Year of study is required"),
+  phone: Yup.string().length(10, "The number should have 10 characters"),
+  gender: Yup.string()
+    .required("Gender is required")
+    .oneOf(["male", "female", "prefer not say"]),
+  password: Yup.string()
+    .min(6, "Password should be more than 6 characters")
+    .max(15, "Password should be less than 15 characters"),
+  conf_password: Yup.string()
+    .min(6, "Password should be more than 6 characters")
+    .max(15, "Password should be less than 15 characters"),
+});
 
 function Signin() {
-  //    const validationSchema = Yup.object({
-  //     firstname: Yup.string().required("First Name is required"),
-  //     lastname:Yup.string().required("Last Name is required"),
-  //     emailAddress: Yup.string().required("Email Address is required.").email("Use correct email address"),
-  //     year: Yup.string().required("Year of study is required"),
-  //     phoneno: Yup.string().length(10, "The number should have 10 characters"),
-  //     gender: Yup.string().required("Gender is required"),
-  //     password: Yup.string().min(6, "Password should be more than 6 characters").max(15, "Password should be less than 15 characters")
-  //    })
-  const formik = useFormik({
-    initialValues: {
-      firstname: "",
-      lastname: "",
-      emailAddress: "",
-      year: "",
-      phoneno: "",
-      gender: "",
-      password: "",
-    },
+  const [submitting, setSubmitting] = useState(false);
+  const navigate = useNavigate();
 
-    // onSubmit : (formState) => {
-    //     console.log("The form has been submitted successfully")
-    //     console.log(formState)
-    // },
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    emailAddress: "",
+    year: "",
+    phone: "",
+    gender: "",
+    password: "",
+  };
+  const onSubmit = async (formState) => {
+    setSubmitting(false);
+    if (formState.password !== formState.conf_password) {
+      toast("Password mismatch", {
+        theme: "failure",
+        duration: 4000,
+      });
+      return;
+    }
+    try {
+      const response = await fetch(`${apiURL}/api/users/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+      console.log(response);
 
-    // validationSchema: validationSchema,
-  });
+      const data = await response.json();
+      if (data.success == true) {
+        toast("Succesful Registration. Await ADMIN approval.", {
+          theme: "success",
+          duration: 2000,
+        });
+        navigate("/login");
+      } else {
+        toast(data.message, {
+          theme: "failure",
+          duration: 2000,
+        });
+      }
+      console.log(data);
+    } catch (err) {
+      toast(err.message, { theme: "failure" });
+    }
+    setSubmitting(false);
+  };
+
+  const formik = useFormik({ initialValues, onSubmit, validationSchema });
   console.log(formik.values);
 
   return (
@@ -77,18 +127,24 @@ function Signin() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+            {formik.touched.emailAddress && formik.errors.emailAddress && (
+              <p>{formik.errors.emailAddress}</p>
+            )}
           </div>
           <div className="signin_input">
-            <label htmlFor="phoneno">Phone Number:</label>
+            <label htmlFor="phone">Phone Number:</label>
             <input
-              type="number"
-              name="phoneno"
-              id="phoneno"
-              value={formik.values.phoneno}
+              type="text"
+              name="phone"
+              id="phone"
+              value={formik.values.phone}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
           </div>
+          {formik.touched.phone && formik.errors.phone && (
+            <p>{formik.errors.phone}</p>
+          )}
           <div className="signin_input">
             <label>Gender:</label>
             <div className="gender_input">
@@ -123,6 +179,9 @@ function Signin() {
                 <label htmlFor="prefer_not">Prefer not to say</label>
               </div>
             </div>
+            {formik.touched.gender && formik.errors.gender && (
+              <p>{formik.errors.gender}</p>
+            )}
           </div>
           <div className="signin_input">
             <label htmlFor="year">Year:</label>
@@ -134,11 +193,14 @@ function Signin() {
               onBlur={formik.handleBlur}
             >
               <option value="year">--Year--</option>
-              <option value="year-1">Year 1</option>
-              <option value="year-2">Year 2</option>
-              <option value="year-3">Year 3</option>
-              <option value="year-4">Year 4</option>
+              <option value="year 1">Year 1</option>
+              <option value="year 2">Year 2</option>
+              <option value="year 3">Year 3</option>
+              <option value="year 4">Year 4</option>
             </select>
+            {formik.touched.year && formik.errors.year && (
+              <p>{formik.errors.year}</p>
+            )}
           </div>
           <div className="signin_input">
             <label htmlFor="password">Password:</label>
@@ -150,6 +212,9 @@ function Signin() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+            {formik.touched.password && formik.errors.password && (
+              <p>{formik.errors.password}</p>
+            )}
           </div>
           <div className="signin_input">
             <label htmlFor="conf_password">Confirm Password:</label>
@@ -160,8 +225,11 @@ function Signin() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+            {formik.touched.conf_password && formik.errors.conf_password && (
+              <p>{formik.errors.conf_password}</p>
+            )}
           </div>
-          <button>Sign In</button>
+          <button type="submit">Sign In</button>
         </form>
       </div>
     </section>

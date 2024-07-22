@@ -50,3 +50,7 @@ form {
   background-color: #ffffff;
   color: #f56508;
 }
+.error_message {
+  color: #ffffff;
+  text-align: center;
+}

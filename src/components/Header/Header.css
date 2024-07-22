@@ -6,6 +6,7 @@
   height: 7vh;
   padding-left: 2rem;
   padding-right: 2rem;
+  /* position: relative; */
 }
 @media screen and (max-width: 50em) {
   .header_wrapper {

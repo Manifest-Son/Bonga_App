@@ -1,0 +1,19 @@
+.write_collabo {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-color: #f56508;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 5rem;
+  right: 10rem;
+  cursor: pointer;
+}
+.write_collabo svg {
+  color: green;
+  height: 5rem;
+  width: 5rem;
+  padding: 1rem;
+}
