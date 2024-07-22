@@ -1,68 +1,80 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import './Login.css';
-import { useFormik } from 'formik';
-import toast from 'react-simple-toasts';
-import 'react-simple-toasts/dist/theme/failure.css';
-import 'react-simple-toasts/dist/theme/success.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Login.css";
+import { useFormik } from "formik";
+import toast from "react-simple-toasts";
+import "react-simple-toasts/dist/theme/failure.css";
+import "react-simple-toasts/dist/theme/success.css";
+import { useNavigate } from "react-router-dom";
 import {
   FacebookLoginButton,
   GoogleLoginButton,
-} from 'react-social-login-buttons';
-import * as Yup from 'yup';
-import { apiURL } from '../../config/config';
+} from "react-social-login-buttons";
+import * as Yup from "yup";
+import { apiURL } from "../../config/config";
+import authStore from "../../store/Store";
 
 const validateSchema = Yup.object({
   emailAddress: Yup.string()
-    .required('Email Address cannot be empty')
-    .email('Invalid email address'),
+    .required("Email Address cannot be empty")
+    .email("Invalid email address"),
   password: Yup.string()
-    .required('Password cannot be empty')
-    .min(5, 'Password cannot be less than 5 characters')
-    .max(15, 'Password cannot be more than 15 characters'),
+    .required("Password cannot be empty")
+    .min(5, "Password cannot be less than 5 characters")
+    .max(15, "Password cannot be more than 15 characters"),
 });
 
 function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const setUser = authStore((state) => state.setUser);
+  const setToken = authStore((state) => state.setToken);
 
   const initialValues = {
-    emailAddress: '',
-    password: '',
+    emailAddress: "",
+    password: "",
   };
 
   const onSubmit = async (formState) => {
     setLoading(true);
     try {
       const response = await fetch(`${apiURL}/api/auth/login`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formState),
+        credentials: 'include'
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        toast('Login successful!', { theme: 'success', duration: 2000 });
-        if(data.role == "user"){
-          navigate('/collaboration');
+        setUser(data.data);
+        setToken(data.token);
+        toast("Login successful!", { theme: "success", duration: 2000 });
+        if (data.role == "user") {
+          navigate("/collaboration");
         } else {
-          navigate('/admin');
+          navigate("/admin");
         }
       } else {
-        throw new Error(data.message  && toast("Login failed", { theme: "failure"}));
+        throw new Error(
+          data.message && toast("Login failed", { theme: "failure" }),
+        );
       }
     } catch (err) {
-      toast(err.message, { theme: 'failure', duration: 2000 });
+      toast(err.message, { theme: "failure", duration: 2000 });
     } finally {
       setLoading(false);
     }
   };
 
-  const formik = useFormik({ initialValues, onSubmit, validationSchema: validateSchema });
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema: validateSchema,
+  });
 
   return (
     <section className="login_container">
@@ -98,13 +110,27 @@ function Login() {
             )}
           </div>
           <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Log In'}
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
         <hr />
         <div className="third-party">
-          <FacebookLoginButton onClick={() => toast('Facebook login is not implemented yet', { theme: 'failure', duration: 2000 })} />
-          <GoogleLoginButton onClick={() => toast('Google login is not implemented yet', { theme: 'failure', duration: 2000 })} />
+          <FacebookLoginButton
+            onClick={() =>
+              toast("Facebook login is not implemented yet", {
+                theme: "failure",
+                duration: 2000,
+              })
+            }
+          />
+          <GoogleLoginButton
+            onClick={() =>
+              toast("Google login is not implemented yet", {
+                theme: "failure",
+                duration: 2000,
+              })
+            }
+          />
         </div>
       </div>
     </section>

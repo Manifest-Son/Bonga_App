@@ -2,9 +2,17 @@
 import React from "react";
 import logoImg from "../../assets/logo.jpeg";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import authStore from "../../store/Store";
 
 function Header() {
+  const user = authStore((state) => state.user)
+  const navigate = useNavigate()
+  const setToken = authStore((state) => state.setToken)
+  const handleClick = () => {
+    setToken(null)
+    navigate('./login')
+}
   return (
     <section className="header_container">
       <div className="header_wrapper">
@@ -24,23 +32,17 @@ function Header() {
               </nav>
             </li>
           </ol>
-          {/* <button className="login">
-            <Link to="/login">Log In</Link>
-          </button>
-          <button className="login">
-            <Link to="/signin">Sign In</Link>
-          </button> */}
-          {/* {user ? (
+          {user ? (
           <>
             <span>Welcome, {user.firstname}</span>
-            <button onClick={logout}>Logout</button>
+            <button onClick={handleClick}>Logout</button>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <button className="login"><Link to="/login">Login</Link></button>
+            <button className="login"><Link to="/signup">Sign Up</Link></button>
           </>
-        )} */}
+        )}
         </div>
       </div>
     </section>
