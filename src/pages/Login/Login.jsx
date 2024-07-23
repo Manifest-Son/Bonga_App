@@ -44,7 +44,7 @@ function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formState),
-        credentials: 'include'
+        credentials: "include",
       });
 
       const data = await response.json();
@@ -60,7 +60,7 @@ function Login() {
         }
       } else {
         throw new Error(
-          data.message && toast("Login failed", { theme: "failure" }),
+          data.message && toast(data.message, { theme: "failure" }),
         );
       }
     } catch (err) {

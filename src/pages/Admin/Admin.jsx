@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./Admin.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminSideNav from "../../components/SideNav/AdminSideNav";
 import AdminEvents from "./AdminEvents";
 import FloatingWrite from "../../components/FloatingWrite/FloatingWrite";
-// import MembersApproved from './MembersApproved';
-// import UnApprovedMembers from './UnapprovedMembers';
+import MembersApproved from './MembersApproved';
+import UnApprovedMembers from './UnapprovedMembers';
 import AddEvent from "./AddEvent";
 function Admin() {
   return (
@@ -16,8 +15,8 @@ function Admin() {
           <AdminSideNav />
         </div>
         <div className="Admin_panel">
-          {/* <MembersApproved /> */}
-          {/* <UnApprovedMembers /> */}
+          <MembersApproved /> 
+         <UnApprovedMembers />
           <AdminEvents />
           <FloatingWrite />
           <AddEvent />

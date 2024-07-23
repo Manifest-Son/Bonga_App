@@ -9,6 +9,7 @@ import Collaboration from "./pages/Collaborate/Colbaboration";
 import Events from "./pages/Eventpage/Events";
 import Admin from "./pages/Admin/Admin";
 import About from "./pages/About/About";
+import CollaboWriting from "./pages/Collaborate/ColaboWriting";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/collaboration" element={<Collaboration />} />
           <Route path="/events" element={<Events />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/create" element={<CollaboWriting />} />
         </Routes>
       </BrowserRouter>
     </>

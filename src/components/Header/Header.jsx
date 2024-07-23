@@ -6,13 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import authStore from "../../store/Store";
 
 function Header() {
-  const user = authStore((state) => state.user)
-  const navigate = useNavigate()
-  const setToken = authStore((state) => state.setToken)
+  const user = authStore((state) => state.user);
+  const navigate = useNavigate();
+  const setToken = authStore((state) => state.setToken);
   const handleClick = () => {
-    setToken(null)
-    navigate('./login')
-}
+    setToken(null);
+    navigate("./login");
+  };
   return (
     <section className="header_container">
       <div className="header_wrapper">
@@ -33,16 +33,20 @@ function Header() {
             </li>
           </ol>
           {user ? (
-          <>
-            <span>Welcome, {user.firstname}</span>
-            <button onClick={handleClick}>Logout</button>
-          </>
-        ) : (
-          <>
-            <button className="login"><Link to="/login">Login</Link></button>
-            <button className="login"><Link to="/signup">Sign Up</Link></button>
-          </>
-        )}
+            <>
+              <span>Welcome, {user.firstname}</span>
+              <button onClick={handleClick}>Logout</button>
+            </>
+          ) : (
+            <>
+              <button className="login">
+                <Link to="/login">Login</Link>
+              </button>
+              <button className="login">
+                <Link to="/signin">Sign Up</Link>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </section>

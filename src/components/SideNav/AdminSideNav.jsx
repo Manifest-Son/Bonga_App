@@ -12,7 +12,7 @@ function AdminSideNav() {
           <p>Role: Admin</p>
         </div>
         <div className="admin_links">
-          <Link to="/">Profile</Link>
+          <Link to="/profile">Profile</Link>
           <Link to="/">Members Approved</Link>
           <Link to="/">Members Pending</Link>
           <Link to="/">Events Box</Link>
