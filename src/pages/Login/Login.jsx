@@ -54,14 +54,12 @@ function Login() {
         setToken(data.token);
         toast("Login successful!", { theme: "success", duration: 2000 });
         if (data.role == "user") {
-          navigate("/collaboration");
-        } else {
           navigate("/admin");
+        } else {
+          navigate("/collaboration");
         }
       } else {
-        throw new Error(
-          data.message && toast(data.message, { theme: "failure" }),
-        );
+         toast(data.message, { theme: "failure" })
       }
     } catch (err) {
       toast(err.message, { theme: "failure", duration: 2000 });
@@ -110,7 +108,7 @@ function Login() {
             )}
           </div>
           <button type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Log In"}
+            {loading ? "Logging in..." : "Log In" }
           </button>
         </form>
         <hr />

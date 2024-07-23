@@ -4,6 +4,8 @@ import userStore from "../../store/Store.js";
 import { useState, useEffect } from "react";
 import { apiURL } from "../../config/config.js";
 import toast from "react-simple-toasts";
+import "react-simple-toasts/dist/theme/failure.css";
+import "react-simple-toasts/dist/theme/success.css";
 
 function Profile() {
   const { user, setUser, updateUser } = userStore();
@@ -12,16 +14,16 @@ function Profile() {
   useEffect(() => {
     const loadProfile = async () => {
       try {
-        const response = await fetch(`${apiURL}/api/users/profile`);
+        const response = await fetch(`${apiURL}/api/users/profile`, {credentials: 'include'});
         if (!response.ok) {
-          throw new Error("Failed to fetch user profile");
+          toast("Failed to fetch user profile",{theme:"failure", duration: 2000});
         }
         console.log(response)
         const data = response.json();
         setUser(data), setProfile(data);
         console.log(data);
       } catch (error) {
-        console.error("Failed to load user profile", error);
+       toast("Failed to load user profile",{theme: "failure", duration: 2000});
       }
     };
 
@@ -37,7 +39,7 @@ function Profile() {
     e.preventDefault();
     try {
       const response = await fetch(`${apiURL}/api/users`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
@@ -56,7 +58,7 @@ function Profile() {
       }
     } catch (error) {
       console.error("Failed to update profile", error);
-      alert("Failed to update profile");
+      toast("Failed to update profile", {theme: "failure", duration:2000});
     }
   };
 

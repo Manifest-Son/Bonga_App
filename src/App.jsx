@@ -10,6 +10,9 @@ import Events from "./pages/Eventpage/Events";
 import Admin from "./pages/Admin/Admin";
 import About from "./pages/About/About";
 import CollaboWriting from "./pages/Collaborate/ColaboWriting";
+import MembersApproved from "./pages/Admin/MembersApproved";
+import UnApprovedMembers from "./pages/Admin/UnapprovedMembers";
+import AddEvent from "./pages/Admin/AddEvent";
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/create" element={<CollaboWriting />} />
+          <Route path="/members-approved" element={<MembersApproved />} />
+          <Route path="/members-unpproved" element={<UnApprovedMembers />} />
+          <Route path="/add-event" element={<AddEvent />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Collabos from "./Collabos";
 import RightNav from "./RightNav";
 import SideNav from "../../components/SideNav/SideNav";
-// import FloatingWrite from "../../components/FloatingWrite/FloatingWrite";
+import FloatingWrite from "../../components/FloatingWrite/FloatingWrite";
 
 function Collaboration() {
   const navigate = useNavigate();
-
   const handleClick = () => {
     navigate("/create");
   };
@@ -19,7 +18,7 @@ function Collaboration() {
       <div className="center_container">
         <Collabos />
         <button onClick={handleClick}>Create Event</button>
-        {/* <FloatingWrite /> */}
+        <FloatingWrite />
       </div>
       <div className="side_container">
         <RightNav />

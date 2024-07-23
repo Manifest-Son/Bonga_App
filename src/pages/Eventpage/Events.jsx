@@ -5,7 +5,8 @@ import React from "react";
 import SideNav from "../../components/SideNav/SideNav";
 import TodayEvents from "./TodayEvents";
 import UpcomingEvents from "./UpcomingEvents";
-import PastEvents from "./PastEvents";
+// import PastEventList from "./PastEvents";
+
 
 function Events() {
   return (
@@ -16,7 +17,7 @@ function Events() {
       <div className="main_content">
         <TodayEvents />
         <UpcomingEvents />
-        <PastEvents />
+        {/* <PastEventList /> */}
       </div>
     </section>
   );

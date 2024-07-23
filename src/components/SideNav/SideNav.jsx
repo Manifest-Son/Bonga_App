@@ -5,15 +5,19 @@ import { CgProfile } from "react-icons/cg";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
+import authStore from "../../store/Store";
+// import { useState } from "react";
 
 function SideNav() {
+  const{user} = authStore()
   return (
     <section>
       <div className="sidenav_wrapper">
         <div className="sidenav_profile">
           <img src={sampleImg} alt="profile image" />
-          <p> Name: Lennox Githinji</p>
-          <p> Year: Year 1</p>
+          <p> Name:{user.firstname} {user.lastname}</p>
+          <p> Year: {user.year}</p>
+          <p> Role: {user.role}</p>
         </div>
         <div className="side_nav">
           <Link to="/profile">
