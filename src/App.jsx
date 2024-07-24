@@ -32,7 +32,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/create" element={<CollaboWriting />} />
           <Route path="/members-approved" element={<MembersApproved />} />
-          <Route path="/members-unpproved" element={<UnApprovedMembers />} />
+          <Route path="/members-unapproved" element={<UnApprovedMembers />} />
           <Route path="/add-event" element={<AddEvent />} />
           <Route path="/delete-event" element={<DeleteEvent />} />
           <Route path="/update-event" element={<UpdateEvent />} />

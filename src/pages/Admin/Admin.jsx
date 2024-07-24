@@ -16,7 +16,7 @@ function Admin() {
         </div>
         <div className="Admin_panel">
           <h1>Hello World</h1>
-          {/* <MembersApproved />  */}
+          <MembersApproved /> 
          {/* <UnApprovedMembers /> */}
           {/* <AdminEvents /> */}
           {/* <FloatingWrite />

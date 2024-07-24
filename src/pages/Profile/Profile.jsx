@@ -12,6 +12,7 @@ function Profile() {
   const { user, setUser, updateUser } = userStore();
   const [profile, setProfile] = useState(user);
 
+  console.log(user)
   useEffect(() => {
     const loadProfile = async () => {
       try {
