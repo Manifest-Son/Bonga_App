@@ -2,12 +2,11 @@
 import React from "react";
 import "./Admin.css";
 import AdminSideNav from "../../components/SideNav/AdminSideNav";
-import AdminEvents from "./AdminEvents";
-import FloatingWrite from "../../components/FloatingWrite/FloatingWrite";
-import MembersApproved from './MembersApproved';
-import UnApprovedMembers from './UnapprovedMembers';
-import AddEvent from "./AddEvent";
+import authStore from "../../store/Store";
+
+
 function Admin() {
+  const user = authStore()
   return (
     <section>
       <div className="admin_wrapper">
@@ -15,12 +14,7 @@ function Admin() {
           <AdminSideNav />
         </div>
         <div className="Admin_panel">
-          <h1>Hello World</h1>
-          <MembersApproved /> 
-         {/* <UnApprovedMembers /> */}
-          {/* <AdminEvents /> */}
-          {/* <FloatingWrite />
-          <AddEvent /> */}
+          <h1>Welcome back! {user.firstname} {user.lastname}</h1>
         </div>
       </div>
     </section>

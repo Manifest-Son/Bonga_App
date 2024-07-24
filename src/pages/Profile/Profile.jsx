@@ -16,7 +16,7 @@ function Profile() {
   useEffect(() => {
     const loadProfile = async () => {
       try {
-        const response = await fetch(`${apiURL}/api/users/profile${user.userId}`, {credentials: 'include'});
+        const response = await fetch(`${apiURL}/api/users/display`, {credentials: 'include'});
         if (!response.ok) {
           toast("Failed to fetch user profile",{theme:"failure", duration: 2000});
         }
@@ -31,11 +31,6 @@ function Profile() {
 
     loadProfile();
   }, [setUser]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setProfile((prevState) => ({ ...prevState, [name]: value }));
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +67,6 @@ function Profile() {
                 type="text"
                 name="firstname"
                 id="firstname"
-                // value={profile.firstname || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -82,7 +76,6 @@ function Profile() {
                 type="text"
                 name="lastname"
                 id="lastname"
-                // value={profile.lastname || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -92,7 +85,6 @@ function Profile() {
                 type="email"
                 name="emailAddress"
                 id="emailAddress"
-                // value={profile.emailAddress || ""}
               />
             </div>
             <div className="profile_input">
@@ -101,7 +93,6 @@ function Profile() {
                 type="text"
                 name="year"
                 id="year"
-                // value={profile.year || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -111,7 +102,6 @@ function Profile() {
                 type="text"
                 name="course"
                 id="course"
-                // value={profile.course || ""}
                 onChange={handleInputChange}
               />
             </div>
@@ -121,7 +111,6 @@ function Profile() {
                 type="text"
                 name="phone"
                 id="phone"
-                // value={profile.phone || ""}
                 onChange={handleInputChange}
               />
             </div>

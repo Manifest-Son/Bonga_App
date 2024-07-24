@@ -15,6 +15,7 @@ import UnApprovedMembers from "./pages/Admin/UnapprovedMembers";
 import AddEvent from "./pages/Admin/AddEvent";
 import DeleteEvent from "./pages/Admin/DeleteEvent";
 import UpdateEvent from "./pages/Admin/UpdateEvent";
+import AdminEvent from "./pages/Admin/AdminEvent";
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           <Route path="/add-event" element={<AddEvent />} />
           <Route path="/delete-event" element={<DeleteEvent />} />
           <Route path="/update-event" element={<UpdateEvent />} />
+          <Route path="/adm-event" element={<AdminEvent />} />
+
         </Routes>
       </BrowserRouter>
     </>

@@ -10,6 +10,13 @@ import "react-simple-toasts/dist/theme/success.css";
 
 // eslint-disable-next-line react/prop-types
 const MembersApproved = ({ userImg, firstname, lastname, emailAddress, phone }) => {
+  const handleAccept = () =>{
+    //Updates the request
+  }
+
+  const handleDecline = () => {
+    //Delete the request
+  }
   return (
     <section>
       <div className="members_approval_wrapper">
@@ -27,6 +34,10 @@ const MembersApproved = ({ userImg, firstname, lastname, emailAddress, phone }) 
             <IoEnterOutline /> Email Address: {emailAddress}
           </p>
         </div>
+        <div className="unapproved_controls">
+        <button onClick= {handleAccept}>Accept</button>
+        <button onClick={handleDecline}>Decline</button>
+      </div>
       </div>
     </section>
   );

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import authStore from "../../store/Store";
 
 function AdminSideNav() {
-  const{user} = authStore()
-
+  const {user} = authStore();
+  
   return (
     <section>
       <div className="admin_nav_wrapper">
@@ -18,7 +18,7 @@ function AdminSideNav() {
           <Link to="/profile">Profile</Link>
           <Link to="/members-approved">Members Approved</Link>
           <Link to="/members-unapproved">Members Pending</Link>
-          <Link to="/events">Events Box</Link>
+          <Link to="/">Events Box</Link>
           <Link to="/bulk">Bulk SMS</Link>
           <Link to="/posts">Posts</Link>
           <Link to="/login">Log Out</Link>

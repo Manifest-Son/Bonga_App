@@ -94,16 +94,16 @@
   background-color: #212c4256;
   border-radius: 15px;
 }
-.admin_wrapper h1 {
+.admin_event_wrapper h1 {
   font-weight: 700;
 }
-.admin_wrapper h3 {
+.admin_event_wrapper h3 {
   font-weight: 400;
   /* font-family:;
     color:; */
   text-align: center;
 }
-.admin_wrapper img {
+.admin_event_wrapper img {
   height: 15rem;
   width: 100%;
   object-fit: cover;
@@ -163,4 +163,9 @@
   font-size: 1.6rem;
   font-weight: 600;
   padding: 0.5rem;
+}
+.event_section{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
