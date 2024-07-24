@@ -13,6 +13,8 @@ import CollaboWriting from "./pages/Collaborate/ColaboWriting";
 import MembersApproved from "./pages/Admin/MembersApproved";
 import UnApprovedMembers from "./pages/Admin/UnapprovedMembers";
 import AddEvent from "./pages/Admin/AddEvent";
+import DeleteEvent from "./pages/Admin/DeleteEvent";
+import UpdateEvent from "./pages/Admin/UpdateEvent";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="/members-approved" element={<MembersApproved />} />
           <Route path="/members-unpproved" element={<UnApprovedMembers />} />
           <Route path="/add-event" element={<AddEvent />} />
+          <Route path="/delete-event" element={<DeleteEvent />} />
+          <Route path="/update-event" element={<UpdateEvent />} />
         </Routes>
       </BrowserRouter>
     </>

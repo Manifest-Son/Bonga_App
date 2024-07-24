@@ -37,28 +37,45 @@ const DisplayApproved = () => {
   const[loading, setLoading] = useState(true)
   const [members, setMembers] = useState([])
   const [error, setError] = useState()
-const fetchData = async() => {
-  try{
-    const response = await axios.get(`${apiURL}/api/users/display`, {credentials: "include"})
-    console.log(response)
-    const data = response.json()
-    console.log(data)
-  } catch(err){
-    toast(err.message, {theme: "failure", duration: 2000})
-  }finally{
-    // setLoading{false}
+  const fetchData = async() => {
+    try{
+      setLoading(true)
+        const response = await fetch(`${apiURL}/api/users/display`, {credentials: "include"})
+        console.log(response)
+        const data = response.json()
+        console.log(data)
+        if(data.success  === true){
+            setMembers(data.data)
+        } else{
+            setMembers(data.message)
+            return toast("Server error", {success: "failure"})
+        }
+    } catch(err){
+        toast(err.message, {theme: "failure", duration: 2000})
+    }finally{
+        setLoading(false)
+    }
   }
-}
-
-  useEffect(()=>{
-    fetchData();
-  }, [])
+  useEffect(() => {
+    fetchData()
+  }, []);
 
   return(
     <section>
       <h1 className="approved_title">Approved Members</h1>
     <div className="approved_container">
-      {/* {data.map((_, i))} */}
+      <h1>Hello World!</h1>
+      {members &&
+      members.map((currentMember, i) => (
+        <MembersApproved 
+        key = {currentMember.id}
+        userImg = {currentMember.userImg} 
+        firstname = {currentMember.firstname} 
+        lastname = {currentMember.lastname} 
+        emailAddress = {currentMember.emailAddress}  
+        phone = {currentMember.phone} 
+        />
+      ))}
     </div>
     </section>
   )

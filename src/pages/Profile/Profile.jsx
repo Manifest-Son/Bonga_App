@@ -6,6 +6,7 @@ import { apiURL } from "../../config/config.js";
 import toast from "react-simple-toasts";
 import "react-simple-toasts/dist/theme/failure.css";
 import "react-simple-toasts/dist/theme/success.css";
+import axios from "axios";
 
 function Profile() {
   const { user, setUser, updateUser } = userStore();
@@ -14,7 +15,7 @@ function Profile() {
   useEffect(() => {
     const loadProfile = async () => {
       try {
-        const response = await fetch(`${apiURL}/api/users/profile`, {credentials: 'include'});
+        const response = await fetch(`${apiURL}/api/users/profile${user.userId}`, {credentials: 'include'});
         if (!response.ok) {
           toast("Failed to fetch user profile",{theme:"failure", duration: 2000});
         }
@@ -38,13 +39,7 @@ function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiURL}/api/users`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(profile),
-      });
+      const response = await axios.patch(`${apiURL}/api/users`, profile);
       console.log(response)
       if (response.ok) {
         const updatedProfile = await response.json();

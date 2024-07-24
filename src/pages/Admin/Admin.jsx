@@ -15,11 +15,12 @@ function Admin() {
           <AdminSideNav />
         </div>
         <div className="Admin_panel">
-          <MembersApproved /> 
-         <UnApprovedMembers />
-          <AdminEvents />
-          <FloatingWrite />
-          <AddEvent />
+          <h1>Hello World</h1>
+          {/* <MembersApproved />  */}
+         {/* <UnApprovedMembers /> */}
+          {/* <AdminEvents /> */}
+          {/* <FloatingWrite />
+          <AddEvent /> */}
         </div>
       </div>
     </section>

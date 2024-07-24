@@ -54,9 +54,9 @@ function Login() {
         setToken(data.token);
         toast("Login successful!", { theme: "success", duration: 2000 });
         if (data.role == "user") {
-          navigate("/admin");
-        } else {
           navigate("/collaboration");
+        } else {
+          navigate("/admin");
         }
       } else {
          toast(data.message, { theme: "failure" })

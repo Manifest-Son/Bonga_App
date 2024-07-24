@@ -4,6 +4,7 @@ import logoImg from "../../assets/logo.jpeg";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import authStore from "../../store/Store";
+import Logout from "../../pages/Login/Logout";
 
 function Header() {
   const user = authStore((state) => state.user);
@@ -35,7 +36,7 @@ function Header() {
           {user ? (
             <>
               <span>Welcome, {user.firstname}</span>
-              <button onClick={handleClick}>Logout</button>
+              <Logout onClick={handleClick} />
             </>
           ) : (
             <>
